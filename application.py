@@ -32,7 +32,7 @@ def asearch():
             if st.button('Submit'):
                 st.subheader("Similar Products")
                 for index, row in df.iterrows():
-                    if row['0'] == uploaded_file:
+                    if row['0'] == str(uploaded_file):
                         while n < z + 1:
                             st.image(row[n], width=100, caption=row[n])
                             n += 1
@@ -67,7 +67,7 @@ def fbfa():
             if st.button('Submit'):
                 st.subheader("Similar Products")
                 for index, row in df.iterrows():
-                    if row['0'] == uploaded_file:
+                    if row['0'] == str(uploaded_file):
                         while n < z + 1:
                             st.image(row[n], width=100, caption=row[n])
                             n += 1
