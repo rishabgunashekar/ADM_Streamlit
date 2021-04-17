@@ -26,14 +26,14 @@ def asearch():
     images = df['0'].unique()
     st.subheader("Choose an image from the dropdown : ")
     pic = st.selectbox('Choices : ', images)
-    st.image(pic, width=None)
+    st.image(Dataset/pic, width=None)
     st.subheader('How Many Images do you want to see?')
     z = st.slider('How many images do you want to see?', 1, 10, 1)
     st.subheader("Similar Products you may want to buy")
     for index, row in df.iterrows():
         if row['0'] == pic:
             while n < z + 1:
-                st.image(row[n], width=100, caption=row[n])
+                st.image(Dataset/row[n], width=100, caption=row[n])
                 n += 1
 
 def fbfa():
