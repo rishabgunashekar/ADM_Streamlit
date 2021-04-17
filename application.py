@@ -16,7 +16,6 @@ import pandas as pd
 
 def asearch():
     st.title("Images using Artistic Style Similarity Search Method")
-    st.write("-------------------------------------------------------------------------------------------------")
 
     def get_data():
         return pd.read_csv('Artistic.csv')
@@ -38,7 +37,6 @@ def asearch():
 
 def fbfa():
     st.title("Images using Facebook FAISS")
-    st.write("-------------------------------------------------------------------------------------------------")
 
     def get_data():
         return pd.read_csv('Faiss.csv')
@@ -57,8 +55,42 @@ def fbfa():
             while n < z + 1:
                 st.image(row[n], width=100, caption=row[n])
                 n += 1
+def test():
+    st.title("Images using Facebook FAISS")
+    def get_data():
+        return pd.read_csv('Faiss.csv')
+
+    n = 1
+    df = get_data()
+    images = df['0'].unique()
+    c = st.selectbox('Select mode of input', ('Upload your Image', 'Select image from existing'))
+    if c=='Upload your Image':
+        uploaded_file = st.file_uploader("Choose an image from local", type="jpeg")
+        if uploaded_file is not None:
+            st.image(pic, width=None)
+            z = st.slider('Select number of images (k) to be retrieved :', 0, 10, 1)
+            if st.button('Submit'):
+                st.subheader("Similar Products")
+                for index, row in df.iterrows():
+                    if row['0'] == pic:
+                        while n < z + 1:
+                            st.image(row[n], width=100, caption=row[n])
+                            n += 1
+    if c=='Select image from existing':
+        st.subheader("Choose an image from the below menu: ")
+        pic = st.selectbox('Choices : ', images)
+        st.image(pic, width=None)
+        st.subheader('Similar images to be shown?')
+        z = st.slider('Similar images to be shown?', 1, 10, 1)
+        st.subheader("Similar Products")
+        for index, row in df.iterrows():
+            if row['0'] == pic:
+                while n < z + 1:
+                    st.image(row[n], width=100, caption=row[n])
+                    n += 1
 
 app = MultiApp()
 app.add_app("Artistic Style Similarity Search", asearch)
 app.add_app("Facebook FAISS", fbfa)
+app.add_app("Test", test)
 app.run()
