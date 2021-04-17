@@ -15,7 +15,7 @@ import pandas as pd
 #Reading the required data
 
 def asearch():
-    st.title("Images using Artistic Style Similarity Search Method")
+    st.title("Artistic Style Similarity Search Method")
 
     def get_data():
         return pd.read_csv('Artistic.csv')
@@ -50,7 +50,7 @@ def asearch():
                     n += 1
 
 def fbfa():
-    st.title("Images using Facebook FAISS")
+    st.title("Facebook FAISS")
 
     def get_data():
         return pd.read_csv('Faiss.csv')
