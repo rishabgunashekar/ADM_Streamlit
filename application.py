@@ -27,12 +27,12 @@ def asearch():
     if c == 'Upload your Image':
         uploaded_file = st.file_uploader("Choose an image from your PC", type="jpeg")
         if uploaded_file is not None:
-            st.image(pic, width=None)
+            st.image(uploaded_file, width=None)
             z = st.slider('Select number of images (k) to be retrieved :', 0, 10, 1)
             if st.button('Submit'):
                 st.subheader("Similar Products")
                 for index, row in df.iterrows():
-                    if row['0'] == pic:
+                    if row['0'] == uploaded_file:
                         while n < z + 1:
                             st.image(row[n], width=100, caption=row[n])
                             n += 1
@@ -62,12 +62,12 @@ def fbfa():
     if c == 'Upload your Image':
         uploaded_file = st.file_uploader("Choose an image from your PC", type="jpeg")
         if uploaded_file is not None:
-            st.image(pic, width=None)
+            st.image(uploaded_file, width=None)
             z = st.slider('Select number of images (k) to be retrieved :', 0, 10, 1)
             if st.button('Submit'):
                 st.subheader("Similar Products")
                 for index, row in df.iterrows():
-                    if row['0'] == pic:
+                    if row['0'] == uploaded_file:
                         while n < z + 1:
                             st.image(row[n], width=100, caption=row[n])
                             n += 1
